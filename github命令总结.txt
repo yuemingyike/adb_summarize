@@ -1,0 +1,19 @@
+1、安装git
+sudo apt-get install git
+2、加上git的源
+sudo apt-add-repository ppa:git-core/ppa   
+sudo apt-get update 
+3、升级git
+apt-get dist-upgrade
+4、创建sshkey
+ssh-keygen -t rsa -C "626754436@qq.com" 
+5、git使用
+mkdir HelloWorld2   创建文件夹
+cd HelloWorld2 进入文件夹
+git init 初始化git
+touch README.md 添加文件
+git add . 把所有文件加入git
+git commit -m "first commit" 提交到git 后面加m的参数是备注信息
+git remote add origin https://github.com/yuemingyike/adb_summarize.git 连接git
+git config --global user.email "626754436@qq.com"  设置用户名
+git push -u origin master   将代码发到github
