@@ -1,0 +1,64 @@
+1、进入手机
+adb shell
+2、查看应用信息 dumpsys
+adb shell dumpsys package com.eebbk.syncenglish > aa.txt 
+adb shell dumpsys meminfo 包名
+adb shell dumpsys alarm      //查看Alarm信息
+adb shell dumpsys audio      //查看声音信息
+adb shell dumpsys battery    //查看电池信息
+adb shell dumpsys cpuinfo //查看CPU信息
+adb shell dumpsys meminfo  <package_name>//查看指定包名的内存信息
+adb shell dumpsys netstats//查看网络统计信息
+adb shell dumpsys diskstats   //查看空间free状态
+adb shell dumpsys jobscheduler   //查看任务计划
+adb shell dumpsys power//查看功耗信息
+adb shell dumpsys wifi//查看wifi信息
+3、截图
+adb shell /system/bin/screencap -p /sdcard/screenshot.png（保存到SDCard）
+adb pull /sdcard/screenshot.png d:/screenshot.png（保存到电脑）
+4、查看设备获得序列号
+adb devices
+5、安装软件
+adb install
+adb -r install 强装
+6、卸载软件
+adb uninstall 
+adb uninstall -k 保留配置和缓存文件的卸载
+7、电脑发送文件到设备
+adb push 本地路径 远程路径
+8、设备上下载文件到电脑
+adb pull 远程路径 本地路径
+9、adb命令填满手机磁盘空间，建立bigfile文件
+adb shell dd if=/dev/zero of=/mnt/sdcard/bigfile
+10、启动应用
+adb shell am start -n breakan.test/breakan.test.TestActivity
+11、查看CPU
+adb shell 进入adb
+top -d 0 -n 1 | grep com.eebbk.synchinese 查看同步语文的CPU占用
+12、查看内存
+adb shell 进入adb
+dumpsys meminfo | grep com.eebbk.synchinese 查看同步语文的内存占用
+13、显示栈顶的包名和mainactivity
+adb shell dumpsys activity | findstr "mFocusedActivity"
+14、关闭Monkey
+adb shell 进入adb
+ps | grep monkey 查看monkey的进程号
+kill pid 进程号
+15、查看帧率
+adb shell dumpsys gfxinfo 包名 > fps.txt
+（在设置里打开GPU呈现模式分析。点击Android设备的“设置”->"开发者选项"，然后勾选“GPU显示配置文件”。）
+Draw + Process + Execute = 完整显示一帧 ，这个时间要小于16ms才能保证每秒60帧。
+16、adb 命令行模拟GPS位置信息
+adb devices   查看模拟器序列号
+adb -s emulator-5554 emu geo fix 121.49612 31.24010   然后用adb emu命令执行设备的console命令geo fix
+17、录视频
+adb shell screenrecord  --size 800x500 /sdcard/myscreenrecord.mp4
+18、pull到本地
+set b=%cd%    本地路径
+adb pull /sdcard/myscreenrecord.mp4 %b% pull到本地路径
+19、
+
+
+
+
+
